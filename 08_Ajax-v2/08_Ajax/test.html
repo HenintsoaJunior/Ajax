@@ -22,27 +22,37 @@ function submitForm()
         if(xhr.status  == 200) {
             var retour = JSON.parse(xhr.responseText);
             var resultat = document.getElementById("dyn");
-	
-            resultat.value = retour[0].Nom;
+            var nombre = document.getElementById("nombre");
+
+            var selectValue = document.getElementById("selectNumber").value;
+
+            if (selectValue >= 1 && selectValue <= 3) {
+                nombre.value = retour[selectValue - 1].Nom;
+            } else {
+                nombre.value = "Choisissez un nombre entre 1 et 3.";
+            }
         } else {
-            document.dyn="Error code " + xhr.status;
+            document.dyn = "Error code " + xhr.status;
         }
-		}
+       }
     }; 
-  //XMLHttpRequest.open(method, url, async)
-   xhr.open("GET", "json.php",  true); 
-   
-   //XMLHttpRequest.send(body)
-   xhr.send(null); 
+
+    var selectedNumber = document.getElementById("selectNumber").value;
+    xhr.open("GET", "json.php?selected=" + selectedNumber, true); 
+    xhr.send(null); 
 }
 
 </script>
 </head>
   
 <body>
-
-        <INPUT type="BUTTON" value="Submit"  onclick="submitForm()" />
-        <INPUT type="text" name="dyn" id="dyn" value="" />
-        <div id="resultat"></div>
+    <select id="selectNumber">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+    </select>
+    <INPUT type="BUTTON" value="Submit"  onclick="submitForm()" />
+    <INPUT type="text" name="dyn" id="dyn" value="" />
+    <INPUT type="text" name="nombre" id="nombre" value="" />
 </body>
 </html>
