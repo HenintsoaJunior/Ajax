@@ -1,0 +1,118 @@
+<!-- Interface pour publier un texte -->
+<div id="publication">
+    <textarea id="textePublication" placeholder="Écris quelque chose..."></textarea>
+    <button onclick="publierTexte()">Publier</button>
+</div>
+
+<!-- Section pour afficher les publications -->
+<div id="publications"></div>
+
+<!-- Modèle d'affichage d'une publication -->
+<template id="template-publication">
+    <div class="publication">
+        <p class="contenu-publication"></p>
+        <textarea class="commentaire" placeholder="Ajouter un commentaire..."></textarea>
+        <button onclick="ajouterCommentaire(this)">Commenter</button>
+        <div class="commentaires"></div>
+    </div>
+</template>
+// Fonction pour publier un texte via AJAX
+function publierTexte() {
+    let texte = document.getElementById('textePublication').value;
+
+    // Effectue une requête AJAX pour envoyer le texte au serveur
+    // Utilise XMLHttpRequest, fetch ou une librairie comme Axios pour gérer la requête
+    // Exemple fictif :
+    fetch('/publication', {
+        method: 'POST',
+        body: JSON.stringify({ texte: texte }),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(response => {
+        if (response.ok) {
+            return response.json();
+        }
+        throw new Error('Erreur lors de la publication.');
+    })
+    .then(data => {
+        // Traite la réponse du serveur si nécessaire
+        // Par exemple, mettre à jour l'affichage des publications
+        afficherPublications();
+    })
+    .catch(error => {
+        console.error('Erreur :', error);
+        // Affiche un message d'erreur à l'utilisateur
+    });
+}
+
+// Fonction pour ajouter un commentaire à une publication
+function ajouterCommentaire(button) {
+    let publication = button.closest('.publication');
+    let commentaire = publication.querySelector('.commentaire').value;
+
+    // Effectue une requête AJAX pour envoyer le commentaire au serveur pour une publication spécifique
+    // Utilise une logique similaire à la fonction publierTexte() pour gérer la requête
+    // Exemple fictif :
+    fetch('/commentaire', {
+        method: 'POST',
+        body: JSON.stringify({ commentaire: commentaire }),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(response => {
+        if (response.ok) {
+            return response.json();
+        }
+        throw new Error('Erreur lors de l\'ajout du commentaire.');
+    })
+    .then(data => {
+        // Traite la réponse du serveur si nécessaire
+        // Par exemple, mettre à jour l'affichage des commentaires pour cette publication
+        afficherCommentaires(publication, data.commentaires);
+    })
+    .catch(error => {
+        console.error('Erreur :', error);
+        // Affiche un message d'erreur à l'utilisateur
+    });
+}
+
+// Fonction pour afficher les publications existantes
+function afficherPublications() {
+    // Effectue une requête AJAX pour récupérer les publications depuis le serveur
+    // Utilise une logique similaire à la fonction publierTexte() pour gérer la requête
+    // Exemple fictif :
+    fetch('/publications')
+    .then(response => {
+        if (response.ok) {
+            return response.json();
+        }
+        throw new Error('Erreur lors de la récupération des publications.');
+    })
+    .then(data => {
+        // Traite les données récupérées et affiche les publications
+        afficher(data.publications);
+    })
+    .catch(error => {
+        console.error('Erreur :', error);
+        // Affiche un message d'erreur à l'utilisateur
+    });
+}
+
+// Fonction pour afficher les commentaires d'une publication spécifique
+function afficherCommentaires(publicationElement, commentaires) {
+    // Affiche les commentaires dans la publication spécifique
+    let commentairesDiv = publicationElement.querySelector('.commentaires');
+    commentairesDiv.innerHTML = '';
+
+    commentaires.forEach(commentaire => {
+        let divCommentaire = document.createElement('div');
+        divCommentaire.textContent = commentaire;
+        commentairesDiv.appendChild(divCommentaire);
+    });
+}
+
+// Appelle la fonction pour afficher les publications au chargement de la page
+afficherPublications();
