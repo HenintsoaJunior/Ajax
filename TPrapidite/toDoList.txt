@@ -1,0 +1,16 @@
+index.php:
+	- Affichage:
+		- (OK)Formulaire (Date, zone de liste de produit, quantite) (10 min)
+		- (OK)Tableau contenant la liste des ventes;
+		- (OK)Bouton actualiser;
+
+	- Metier:
+		- Base:
+			- (OK)Table vente (cf : formulaire) (5 min)
+		- Fonction:
+			- (OK)Insertion vente: 10 min
+			- (OK)connexion: 2 min
+
+	- Integration code:
+		- (OK)Validation formulaire -> Insertion vente
+		- (OK)Bouton actualiser -> mise a jour tableau contenant

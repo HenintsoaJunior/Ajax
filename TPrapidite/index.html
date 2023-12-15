@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Achat</title>
+	
+	</head>
+	<body>
+		<center>
+			<h1>Ajout de Categorie</h1>
+			<form id="categorieForm" class="form-horizontal">
+				<div class="form-group">
+					<label for="categorieName" class="control-label">Nom de la Categorie: </label>
+					<input type="text" name="categorieName" id="categorieName">
+				</div>
+				<div>
+					<input type="submit" class="btn btn-warning" value="Ajouter">
+				</div>
+			</form>
+
+				<div class="col-md-12"> <div class="col-md-offset-2 col-md-8"> <table id="categoryTable" class="table table-bordered table-hover"></table> </div> </div>
+
+			<hr/>
+
+			<h1>Ajout de Produit</h1>
+			<form id="produitForm" class="form-horizontal">
+				<div class="form-group">
+					<label for="categorie" class="control-label">Categorie: </label>
+					<select name="categorie" class="categorie" id="categorie"></select>
+				</div>
+				<div class="form-group">
+					<label for="produitName" class="control-label">Nom du produit: </label>
+					<input type="text" name="produitName" id="produitName">
+				</div>
+				<div class="form-group">
+					<label for="prix" class="control-label">Prix: </label>
+					<input type="number" name="prix" id="prix">
+				</div>
+				<div>
+					<input type="submit" class="btn btn-success" value="Ajouter">
+				</div>
+			</form>
+
+				<div class="col-md-12"> <div class="col-md-offset-2 col-md-8"> <table id="productTable" class="table table-bordered table-hover"></table> </div> </div>
+
+			<hr/>
+
+			<h1>Achat</h1>
+			<form id="myForm" class="form-horizontal">
+				<input type="hidden" name="idVente" id="idVente" value="-1">
+				<div class="form-group">
+					<label for="date" class="control-label">Date: </label>
+					<input type="date" name="date" id="date"> 
+				</div>
+				<div class="form-group">
+					<label for="categorie" class="control-label">Categorie: </label>
+					<select name="categorie" class="categorie" id="categorie"></select>
+				</div>
+				<div class="form-group">
+					<label for="produit" class="control-label">Produit: </label>
+					<input type="text" list="produit-list" name="produit" id="produit">
+					<datalist id="produit-list"></datalist>
+				</div>
+				<div class="form-group">
+					<label for="quantite" class="control-label">Quantite: </label>
+					<input type="number" name="quantite" id="quantite"> 
+				</div>
+				<div class="form-group">
+				 	<input class="btn btn-primary" type="submit" value="Acheter"> 
+				</div>
+			</form>
+
+				<div class="col-md-offset-2 col-md-8"> <table id="resultat" class="table table-bordered table-hover"></table> </div>
+		</center>
+	</body>
+</html>
+	<script type="text/javascript" src="js/functions.js"></script>
+	<script type="text/javascript" src="js/index.js"></script>

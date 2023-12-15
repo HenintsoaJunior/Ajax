@@ -1,18 +1,32 @@
 <?php
+include 'connexion.php';
 
-$hostname = "localhost";
-$port = 5432;
-$username = "postgres";
-$password = "carasco20";
-$database = "Ajax";
-
-$conn = new PDO("pgsql:host=$hostname;port=$port;dbname=$database", $username, $password);
-
-$email = $_POST['email'];
-$password = $_POST['password'];
-if(isset($email,$password)){
-    $sql = "SELECT * FROM membre WHERE email=$email and pwd=$password";
-    alert($sql);
+$conn = conn();
+if (isset($_POST['email'], $_POST['password'])) {
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    login($conn, $email, $password);
+} else {
+    echo json_encode(array('success' => false));
 }
 
+function login($conn, $email, $password)
+{
+    try {
+        $stmt = $conn->prepare("SELECT * FROM membre WHERE email = :email AND pwd = :password");
+        $stmt->bindValue(':email', $email);
+        $stmt->bindValue(':password', $password);
+        $stmt->execute();
+
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($result) {
+            echo json_encode(array('success' => true));
+        } else {
+            echo json_encode(array('success' => false));
+        }
+    } catch (PDOException $e) {
+        echo json_encode(array('success' => false, 'error' => $e->getMessage()));
+    }
+}
 ?>
