@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+   
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+   
+   
+    <script src="function.js"></script>
+    <script>
+        graph() ; 
+        //graph() ; 
+       
+    </script>
+</head>
+<body>
+    <form id="myForm" >
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-4">
+                <script src="assets/js/bootstrap.bundle.min.js"></script>
+                <h1>MT5 TRADE   
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                        <input type="submit" class="btn btn-primary" value="Generer">
+                        <input type="submit" class="btn btn-primary" value="Reinitialiser">
+                      </div>
+                </h1>
+                <div class="mb-3 row">
+                    <h2>Generer les Crypto monnaie</h2>
+                    <div class="col-sm-10">
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label for="inputPassword" class="col-sm-2 col-form-label">Nombre Achat :</label>
+                    <div class="col-sm-10">
+                    <input type="Number" class="form-control" id="inputPassword" name="nbbuy">
+                    </div>
+
+                    <label for="inputPassword" class="col-sm-2 col-form-label">Nombre Vente :</label>
+                    <div class="col-sm-10">
+                    <input type="Number" class="form-control" id="inputPassword" name="nbsale">
+                    </div>
+
+                </div>
+
+                <p>Quantite buy</p>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">max</span>
+                    <input type="number" class="form-control" aria-label="Username" value="" name="max">
+                    <span class="input-group-text">min</span>
+                    <input type="number" class="form-control" aria-label="Server" value="" name="min">
+                </div>
+
+                
+                <p>Quantite sell</p>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">max</span>
+                    <input type="number" class="form-control" aria-label="Username" value="" name="maxsell">
+                    <span class="input-group-text">mix</span>
+                    <input type="number" class="form-control" aria-label="Server" value="" name="minsell">
+                </div>
+
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Date</span>
+                    <input type="date" class="form-control" aria-label="Username" value="" name="date">
+                    <span class="input-group-text">Jour</span>
+                    <input type="number" class="form-control" aria-label="Server" value="" name="day">
+                </div>
+                
+            </div>
+        </div>
+    </div>    
+</form>    
+
+    <div class="col-8">
+         <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <h2>Tableau de Donnee</h2>
+                    <table class="table table-dark table-hover">
+                            <thead>
+                                <tr>
+                                  <th scope="col">Date</th>
+                                  <th scope="col">BEP</th>
+                                  <th scope="col">BTC</th>
+                                  <th scope="col">WRP</th>
+                                  <th scope="col">Info</th>
+                                </tr>
+                              </thead>
+                            <tbody id="table-body">
+                            </tbody>
+                    </table>
+                </div>
+                <div class="row">
+                <h2>Graph</h2>
+
+                
+                    <canvas class="my-4 w-100 chartjs-render-monitor" id="myChart" width="1540" height="650" style="display: block; height: 520px; width: 1232px;"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <!-- La fenêtre modale -->
+   
+     <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Titre de la fenêtre modale</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="modalkely">
+                   <p>
+
+                   </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                    <button type="button" class="btn btn-primary">Enregistrer les changements</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+<script>
+    showdonne() ; 
+</script>
+
+</html>

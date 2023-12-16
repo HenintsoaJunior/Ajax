@@ -1,0 +1,12 @@
+bitcoin BTC: 43 500 $
+bep2    BEP: 39 000 $
+wrapped WRP: 40 000 $
+
+Date: date-debut, jmin, jmax
+Achat: nb line, qmin, qmax
+Vente
+
+Achat -> -2% - +10% Aléatoire
+Vente -> -10% - +2% Aléatoire
+
+Nouveau cours = SUM(prix * quantité)/SUM(quantite)

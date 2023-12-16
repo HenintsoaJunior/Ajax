@@ -1,0 +1,30 @@
+Dashboard
+    Base:
+        - (ok)Table:
+            - cours-initial
+            - transaction (transaction, date, prix, achat)
+        
+    Function:
+        - (ok) calculer cours([$prix, $quantite])
+        - (ok) insert transaction(bitcoin, category, date, price, quantity)
+        - (ok) generate dates(date_min, nday)
+        - (ok) create transaction(rate, type, qmin, qmax)
+        - (ok) generate cours(date_min, njours, line_vente, qmin, qmax, line_achat, qmin, qmax)
+        - (ok) get transaction(date)
+        
+    Affichage: 
+        - form
+            - (ok) date debut, jour min, jour max
+            - (ok) nb achat, qmin, qmax
+            - (ok) nb vente, qmin, qmax
+            - (ok) btn valider
+            - (ok) btn réinitialiser
+        - (ok) table
+            - jours
+            - cours
+            - button popup
+
+    Traitement:
+        - (ok) valider -> generer cours
+        - (ok) button popup -> get transactions
+        - reiintialiser -> supprimer transaction
